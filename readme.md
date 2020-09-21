@@ -8,7 +8,11 @@ Steps to run the WealthShare project in visual studio:
 5. Now connect to the server. After connecting to the sql database navigate to the database folder and right click on it and click on "Import Data-tier Application".
    click next and in "import from local disk" browse to the .bacpac file included in the repository and select Next. In this window in the "database name" use the 
    name "WealthShareDBV2" as this is the name used in the code. After the database name is entered correctly press next and then finish. This will import the database.
-6. Now open Visual Studio and from the toolbar click on open sln. Then browse to the .sln file in the repository.
-7. Inside the solution browser navigate to the web.config file. Inside this file navigate to the Connection string tag (line 60). In this line find the data source 
+6. Manage NuGet Packages ->pagedlist.mvc ->install
+7. Manage NuGet Packages ->Bootstrap-4.4.0->update
+8. Manage NuGet Packages ->jQuery-3.5.1->update
+9. Manage NuGet Packages ->jQuery.Validation-1.19.2->update
+10. Now open Visual Studio and from the toolbar click on open sln. Then browse to the .sln file in the repository.
+11. Inside the solution browser navigate to the web.config file. Inside this file navigate to the Connection string tag (line 60). In this line find the data source 
    tag and there you can see a SQL server connected. Replace the [pc name]\SQLEXPRESS with the server name copied in step 4.
-8. Navigate to the homecontroller and run the project.
+12. Navigate to the homecontroller and run the project.
