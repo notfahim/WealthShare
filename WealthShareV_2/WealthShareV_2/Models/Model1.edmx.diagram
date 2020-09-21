@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f1fbce8f569408bacd3ec0d8f634543" Name="Diagram1">
+        <EntityTypeShape EntityType="WealthShareDBV2Model.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WealthShareDBV2Model.User_Tbl" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WealthShareDBV2Model.Admin_Tbl" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WealthShareDBV2Model.Donation_Tbl" Width="1.5" PointX="9.875" PointY="1.375" />
+        <EntityTypeShape EntityType="WealthShareDBV2Model.Category_Tbl" Width="1.5" PointX="5.375" PointY="7.625" />
+        <EntityTypeShape EntityType="WealthShareDBV2Model.Issue_Tbl" Width="1.5" PointX="7.625" PointY="6.75" />
+        <AssociationConnector Association="WealthShareDBV2Model.FK__Issue_Tbl__UserI__173876EA" />
+        <AssociationConnector Association="WealthShareDBV2Model.FK_Issue_Tbl_Category_Tbl1" />
+        <AssociationConnector Association="WealthShareDBV2Model.FK__Donation___Issue__1CF15040" />
+        <AssociationConnector Association="WealthShareDBV2Model.FK_Issue_Tbl_User_Tbl" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

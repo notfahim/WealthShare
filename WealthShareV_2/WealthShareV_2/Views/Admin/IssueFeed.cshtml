@@ -1,0 +1,105 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<WealthShareV_2.Models.Issue_Tbl>
+
+@{
+    ViewBag.Title = "IssueFeed";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Issue Feed</title>
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/myCustomStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container-fluid issueFeed" style="margin-top:90px;">
+
+
+
+
+        <div class="jumbotron" style=" background-image: linear-gradient(-90deg,#FFFFFF,#E1F5C4,#EDE574,#FFFFFF);">
+            <div class="row">
+                <div class="col">
+                    <center>
+                        <h1>Issue Feed</h1>
+
+                    </center>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+        <div class="row" style="margin-top:90px;">
+
+            @if (Model != null)
+            {
+                foreach (var item in Model)
+                {
+
+
+                    <div class="col-md-4">
+                        <center>
+
+                            <div class="card">
+
+
+                                <img class="card-img-top" src="@Url.Content(item.issueImgPath)" style=" border-radius:18px;" />
+
+                                <div class="card-body">
+                                    <h4 class="card-title" style="color:#808080; font-family:'Arial Rounded MT';text-align:center">@item.Title</h4>
+
+                                    <p class="card-text"> @item.Issue_Description</p>
+                                    @*<div class="progress">
+                                            <div class="progress-bar bg-success" style="width:20%"></div>
+                                        </div>*@
+
+
+
+                                </div>
+
+                                <div class="card-body">
+
+                                    @Html.ActionLink("View Details", "IssueDetails", new { id = @item.Id_issue }, new { @class = "btn btn-success btn-lg" })
+
+                                </div>
+                            </div>
+
+                        </center>
+                    </div>
+
+
+
+                }
+            }
+
+
+
+        </div>
+
+    </div>
+
+
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("IssueFeed", new { page }))
+        </div>
+    </div>
+</body>
+</html>
+
+
+

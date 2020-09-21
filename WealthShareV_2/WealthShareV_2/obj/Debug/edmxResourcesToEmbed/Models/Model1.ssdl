@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WealthShareDBV2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Admin_Tbl">
+    <Key>
+      <PropertyRef Name="Id_ad" />
+    </Key>
+    <Property Name="Id_ad" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AdminUserName" Type="varchar" MaxLength="50" />
+    <Property Name="AdminEmail" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="AdminPassword" Type="varchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Category_Tbl">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Donation_Tbl">
+    <Key>
+      <PropertyRef Name="Id_donation" />
+    </Key>
+    <Property Name="Id_donation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Iduser" Type="int" Nullable="false" />
+    <Property Name="Idissue" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Progress" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Issue_Tbl">
+    <Key>
+      <PropertyRef Name="Id_issue" />
+    </Key>
+    <Property Name="Id_issue" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="200" />
+    <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Issue_Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Goal" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CurrentAmount" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="IssueStatus" Type="nvarchar" MaxLength="50" />
+    <Property Name="issueImgPath" Type="nvarchar(max)" />
+    <Property Name="Cat_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User_Tbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserEmail" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserPassword" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Occupation" Type="nvarchar" MaxLength="200" />
+    <Property Name="AccountStatus" Type="nvarchar" MaxLength="200" />
+    <Property Name="imgPath" Type="nvarchar(max)" />
+  </EntityType>
+  <Association Name="FK__Donation___Issue__1CF15040">
+    <End Role="Issue_Tbl" Type="Self.Issue_Tbl" Multiplicity="1" />
+    <End Role="Donation_Tbl" Type="Self.Donation_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue_Tbl">
+        <PropertyRef Name="Id_issue" />
+      </Principal>
+      <Dependent Role="Donation_Tbl">
+        <PropertyRef Name="Idissue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_Tbl_Category_Tbl1">
+    <End Role="Category_Tbl" Type="Self.Category_Tbl" Multiplicity="0..1" />
+    <End Role="Issue_Tbl" Type="Self.Issue_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category_Tbl">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Issue_Tbl">
+        <PropertyRef Name="Cat_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_Tbl_User_Tbl">
+    <End Role="User_Tbl" Type="Self.User_Tbl" Multiplicity="1" />
+    <End Role="Issue_Tbl" Type="Self.Issue_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Tbl">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue_Tbl">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="WealthShareDBV2ModelStoreContainer">
+    <EntitySet Name="Admin_Tbl" EntityType="Self.Admin_Tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category_Tbl" EntityType="Self.Category_Tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Donation_Tbl" EntityType="Self.Donation_Tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Issue_Tbl" EntityType="Self.Issue_Tbl" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Tbl" EntityType="Self.User_Tbl" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Donation___Issue__1CF15040" Association="Self.FK__Donation___Issue__1CF15040">
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+      <End Role="Donation_Tbl" EntitySet="Donation_Tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_Tbl_Category_Tbl1" Association="Self.FK_Issue_Tbl_Category_Tbl1">
+      <End Role="Category_Tbl" EntitySet="Category_Tbl" />
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_Tbl_User_Tbl" Association="Self.FK_Issue_Tbl_User_Tbl">
+      <End Role="User_Tbl" EntitySet="User_Tbl" />
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

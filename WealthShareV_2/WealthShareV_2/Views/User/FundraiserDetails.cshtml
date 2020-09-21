@@ -1,0 +1,32 @@
+﻿@model WealthShareV_2.Models.FundraiserDetails
+@{
+    ViewBag.Title = "FundraiserDetails";
+}
+
+
+<div class="col-lg-8 col-md-8">
+
+    <div>
+        <h1>@Model.Title <small>AD-ID:@Model.Id_issue</small></h1>
+    </div>
+
+    <img src="@Url.Content(@Model.imgPath)" style="width:800PX; height:450PX" />
+
+    <div>
+        <h1>Description: </h1>
+        <p>@Model.UserName</p>
+    </div>
+
+    <table>
+
+        @*<tr> <td>Price: </td> <td>@Model.CategoryName </td> </tr>*@
+        <tr> <td>Category: </td> <td>@Model.UserEmail </td> </tr>
+        <tr> <td>Posted by: </td> <td>@Model.Occupation</td> </tr>
+        <tr> <td>Contact: </td> <td>@Model.DateOfBirth </td> </tr>
+
+        
+    </table>
+
+
+
+</div>

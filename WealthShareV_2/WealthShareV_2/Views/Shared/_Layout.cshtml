@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -WealthShare Application</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />               
+    <link href="~/Content/myCustomStyleSheet.css" rel="stylesheet" />
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+   
+
+
+    <div class="container-fluid ">
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-light" style=" background-image: linear-gradient(-90deg,#CAC531, #F2C94C);">
+
+            <a class="navbar-brand" href="#" style="color:darkblue">
+
+                <img src="~/images/Logo.png" width="70" height="70" />
+                <b>  WEALTH SHARE</b>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+               
+                <ul class="navbar-nav nav-link" style="font-size:large;">
+
+                    <li style="margin-right:10px;"><b>@Html.ActionLink("Home", "Index", "Home", null, new { @class = "ht" })</b></li>
+                    <li style="margin-right:10px;"><b>@Html.ActionLink("About Us", "About", "Home", null, new { @class = "ht" })</b></li>
+
+                    <li style="margin-right:10px;"><b>@Html.ActionLink("Impact", "Impact", "Home", null, new { @class = "ht" })</b></li>
+                   
+
+
+
+
+                </ul>
+
+
+
+
+
+                <ul class="navbar-nav nav-link ml-auto" style="font-size:large;">
+
+
+
+                   
+
+
+                    <li style="margin-right:10px;">
+                        <b>
+
+                         
+                            @Html.ActionLink("Issue Feed", "IssueFeed", "User", null, new { @class = "ht" })
+
+                          
+
+
+
+
+                        </b>
+                    </li>
+
+                    <li style="margin-right:10px;">
+                        <b>
+
+                            @if (Session["Id"] != null)
+                            {
+                                @Html.ActionLink("Create Issue", "CreateIssue", "User", null, new { @class = "ht" })
+
+                            }
+                        </b>
+                    </li>
+                    <li style="margin-right:10px;">
+                        <b>
+                            @if (Session["Id"] == null && Session["Id_ad"] == null)
+                            {
+
+                                @Html.ActionLink("Login", "Login", "User", null, new { @class = "ht", })
+
+                            }
+                            else if (Session["Id"] != null)
+                            {
+                                @Html.ActionLink("Hello "+ @TempData["username"], "IssueFeed", "User", null, new { @class = "ht", })
+                            }
+                        </b>
+                    </li>
+
+
+
+                    <li style="margin-right:10px;">
+                        <b>
+
+                            @if (Session["Id_ad"] != null)
+                            {
+                                @Html.ActionLink("Member Management", "MemberManagement", "Admin", null, new { @class = "ht" })
+
+                            }
+                        </b>
+                    </li>
+
+                    <li style="margin-right:10px;">
+                        <b>
+
+                            @if (Session["Id_ad"] != null)
+                            {
+                                @Html.ActionLink("Issue Management", "IssueManagement", "Admin", null, new { @class = "ht" })
+
+                            }
+                        </b>
+                    </li>
+
+
+                    @*<li>
+
+            @if (Session["Id"] != null)
+            {
+                @Html.ActionLink("IssueManagement", "IssueManagement", "Admin", null, new { @class = "ht" })
+
+            }
+        </li>*@
+
+                    <li style="margin-right:10px;">
+                        <b>
+                            @if (Session["Id"] == null && Session["Id_ad"] == null)
+                            {
+                                @Html.ActionLink("Sign Up", "SignUp", "User", null, new { @class = "ht" })
+                            }
+                            else if(Session["Id"] != null)
+                            {
+                                @Html.ActionLink("Logout", "Signout", "User", null, new { @class = "ht" })
+                            }
+
+                        </b>
+                    </li>
+
+
+
+                    <li style="margin-right:10px;">
+                        <b>
+                            @if (Session["Id_ad"] != null)
+                            {
+
+                                @Html.ActionLink("Logout", "SignoutAdmin", "Admin", null, new { @class = "ht", })
+
+                            }
+                           
+                        </b>
+                    </li>
+
+
+
+                    <li style="margin-right:10px;">
+                        <b>
+                            @if (Session["Id_ad"] == null)
+                            {
+
+                                @Html.ActionLink("Admin", "Login", "Admin", null, new { @class = "ht", })
+
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Hello Admin", "Index", "Home", null, new { @class = "ht", })
+                            }
+                        </b>
+                    </li>
+
+                </ul>
+            </div>
+
+
+
+
+        </nav>
+
+    </div>
+
+    @*<div class="container body-content">*@
+        @RenderBody()
+       
+        <footer>
+
+            
+            <div id="footer2" class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                        <h3 style="color:darkblue">Contact Us</h3><br />
+                        <p style="color:darkblue">wealthshare@gmail.com</p><br />
+                        <p style="color:darkblue">&copy; @DateTime.Now.Year All right Reversed. <a class="footerlinks" href="#" target="_blank">Wealth Share</a></p>
+                    </div>
+                </div>
+            </div>
+
+          
+        </footer>
+    @*</div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+        <script src="~/Scripts/jquery.validate.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,181 @@
+﻿@model WealthShareV_2.Models.User_Tbl
+@{
+    ViewBag.Title = "SignUp";
+}
+
+<style>
+
+    .signup {
+        background-image: url('../../images/Login_Signup/loginSignupBG.jpg');
+        background-size: cover;
+        margin-top: 90px;
+    }
+
+        .signup img {
+            margin-top: 20px;
+        }
+</style>
+
+@*<%--Bootstrap CSS--%>*@
+<link href="Bootstrap/CSS/bootstrap.min.css" rel="stylesheet" />
+@*<%--Datatables CSS--%>*@
+<link href="datatables/CSS/jquery.dataTables.min.css" rel="stylesheet" />
+@*<%--Fontawesome CSS--%>*@
+<link href="Fontawesome/css/all.css" rel="stylesheet" />
+@*<%--Custom CSS--%>*@
+<link href="CSS/CustomStyleSheet.css" rel="stylesheet" />
+
+@*<%--jquery--%>*@
+<script src="Bootstrap/JS/jquery-3.5.1.slim.min.js"></script>
+@*<%--popper js--%>*@
+<script src="Bootstrap/JS/popper.min.js"></script>
+@*<%--bootstrap js--%>*@
+<script src="Bootstrap/JS/bootstrap.min.js"></script>
+
+
+<div class="container-fluid signup">
+    @using (Html.BeginForm("SignUp",
+                       "User",
+                       FormMethod.Post,
+                       new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+
+            <div class="col-md-6 ml-auto" >
+                
+                <div class="row ">
+                    <div class="col">
+                        <center>
+
+                            
+                            <img src="~/images/Login_Signup/generaluser.png"  width="150px"/>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <center>
+                            <h3>Sign Up</h3>
+                        </center>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <hr>
+                    </div>
+                </div>
+                <div class="row ">
+                    <div class="col-md-6 mx-auto">
+
+                        <label><b>UserName</b></label>
+                        <div class="form-group">
+                            @*<asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>*@
+                            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "UserName" })
+                            <span style="color:crimson">   @Html.ValidationMessageFor(x => x.UserName)</span>
+                        </div>
+
+
+                        <label><b>Email</b></label>
+                        <div class="form-group">
+                            @*<asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>*@
+                            @Html.TextBoxFor(x => x.UserEmail, new { @class = "form-control", @placeholder = "example@email.com" })
+                            <span style="color:crimson">   @Html.ValidationMessageFor(x => x.UserEmail)</span>
+                        </div>
+
+
+
+                        <label><b>Occupation</b></label>
+                        <div class="form-group">
+                            @*<asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>*@
+                            @Html.TextBoxFor(x => x.Occupation, new { @class = "form-control", @placeholder = "Occupation" })
+                            <span style="color:crimson">   @Html.ValidationMessageFor(x => x.Occupation)</span>
+                        </div>
+
+
+
+                        <label><b>Date Of Birth</b></label>
+                        <div class="form-group">
+                            @*<asp:TextBox CssClass="form-control" ID="TextBox1" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>*@
+                            @Html.TextBoxFor(x => x.DateOfBirth, new { @class = "form-control", @placeholder = "yyyy-mm-dd" })
+                            <span style="color:crimson">   @Html.ValidationMessageFor(x => x.DateOfBirth)</span>
+                        </div>
+
+
+
+
+
+
+                        <label><b>Password</b></label>
+                        <div class="form-group">
+                            @*<asp:TextBox CssClass="form-control" ID="TextBox2" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>*@
+                            @Html.PasswordFor(x => x.UserPassword, new { @class = "form-control", @placeholder = "Password" })
+                            <span style="color:crimson">     @Html.ValidationMessageFor(x => x.UserPassword)</span>
+                        </div>
+
+                        <label><b>Add Image</b></label>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+
+                                <input type="file" name="imgfile" id="imgfile" class="form-control" required="required" />
+
+
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <center>
+                                <p style="color:crimson;">@ViewBag.error</p>
+                            </center>
+                        </div>
+
+
+                        <div class="form-group">
+                            <center>
+                                @*<asp:Button class="btn btn-success btn-lg" ID="Button1" runat="server" Text="Login" />*@
+                                <input type="submit" value="Sign Up" class="btn btn-success btn-lg" />
+                            </center>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <center>
+                                <p>
+                                    Already have an account?
+                                    @Html.ActionLink("Login", "Login", "User", new { @class = "btn btn-primary btn-lg" })
+
+                                </p>
+                            </center>
+                        </div>
+
+
+
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </div>
+    }
+</div>
+
+
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

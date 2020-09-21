@@ -1,0 +1,256 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@*<div class="jumbotron">
+        <h1>ASP.NET</h1>
+        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
+        <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Get more libraries</h2>
+            <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Web Hosting</h2>
+            <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        </div>
+    </div>*@
+
+
+
+<section>
+
+    <div class="carousel slide " data-ride="carousel">
+        <div class="carousel-inner">
+
+            <div class="carousel-item active">
+                
+                <img src="~/images/homepageBanner1.jpg" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>WEALTH SHARE</h1>
+                    <p>Potential meets Opportunity</p>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                
+                <img src="~/images/homepageBanner2.jpg" />
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>WEALTH SHARE</h1>
+                    <p>Potential meets Opportunity</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="Features" style="background-color:#FFEEEE;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <center>
+                    <br /><br />
+                    <h2>Welcome To Wealth Share</h2><br />
+                    <h4>Our 3 Primary Features</h4>
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <center>
+
+
+                    <div class="card featureCard" style="width: 19rem;">
+                       
+                        <img  class="card-img-top" src="~/images/feature1.jpg" alt="Card image cap" height="250" style=" border-radius:18px;"/>
+                        <div class="card-body">
+
+                            <h4 class="card-title">Be a Fundraiser</h4>
+                            <p class="card-text">Get a convenient medium to take initiavie for fundraising .Wealth Share gives you opportunity to become a fundraiser and collect donation.</p>
+                            
+                            @Html.ActionLink("Go Started", "About","Home",  new { @class = "btn btn-primary " })
+
+                        </div>
+                    </div>
+
+                </center>
+            </div>
+            <div class="col-md-4">
+                <center>
+
+                    <div class="card featureCard" style="width: 19rem;">
+                        <img class="card-img-top" src="~/images/feature2.jpg" alt="Card image cap" height="250"  style=" border-radius:18px;"/>
+                        
+                        <div class="card-body">
+
+                            <h4 class="card-title">Give Donation</h4>
+                            <p class="card-text">Get a convenient medium to take initiavie for fundraising .Wealth Share gives you opportunity to become a fundraiser and collect donation.</p>
+                            
+                            @Html.ActionLink("Go Started", "About", "Home", new { @class = "btn btn-primary " })
+                        </div>
+                    </div>
+
+                </center>
+            </div>
+            <div class="col-md-4">
+                <center>
+
+                    <div class="card featureCard" style="width: 19rem;">
+                        <img class="card-img-top" src="~/images/feature3.jpg" alt="Card image cap" height="250"  style=" border-radius:18px;"/>
+                       
+                        <div class="card-body">
+                            <h4 class="card-title">Get An Easy Medium</h4>
+                            <p class="card-text">Get a convenient medium to take initiavie for fundraising .Wealth Share gives you opportunity to become a fundraiser and collect donation.</p>
+                            
+                            @Html.ActionLink("Go Started", "About", "Home", new { @class = "btn btn-primary " })
+                        </div>
+                    </div>
+
+                </center>
+            </div>
+        </div>
+    </div><br />
+
+
+</section>
+
+
+<section>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="display-4">Trending Now</h3><br />
+                <h1 class="display-4">Fundraising for coronavirus relief</h1>
+
+                <p class="lead">As COVID-19 continues to spread, more individuals, communities, and entire nations are feeling the impact in their daily lives. Beyond the global health crisis, the coronavirus is having a severe economic impact on individuals, small businesses, and medical organizations.</p>
+                <hr class="my-4">
+                <p>
+                    Thankfully, we all have the power to do something and make a difference. Here at WealthShare, we're empowering individuals, organizations, and communities to step up in the face of the COVID-19 outbreak and help those who need it most.
+
+                    Start a WealthShare to raise money to help yourself and others during this difficult time. Read our blog post Fundraising for Coronavirus Relief: How You Can Help the Fight for more information.
+
+                </p>
+                <p class="lead">
+                    <a class="btn btn-success btn-lg" href="#" role="button">Learn more</a>
+                </p>
+            </div>
+            <div class="col-md-4">
+                
+                <img src="~/images/wuhan_coronavirus.jpg" height="350" width="450"  />
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <center>
+                    <h2>Find a WealthShare near you</h2>
+                    <p><b>Let's help each other to grow</b></p>
+                </center>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:10px;">
+            <div class="col-md-4" >
+                <center>
+                    <div class="card" style="width: 18rem;">
+                        <img class="card-img-top" src="~/images/schoolDreamsHomepage.jpg" alt="Card image cap" style=" border-radius:18px;"/>
+                       
+                        <div class="card-body">
+
+                            <h5 class="card-title">School Dream</h5>
+                            <p class="card-text">I want to go to a school in States.  But I don't have the money to fund my education and my family isn't supportive of my idea. I can't fund education on my own cause our currency is very weak against American dollar. 1$=110 here. I will be grateful if you help.</p>
+
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width:40%"></div>
+                            </div>
+
+                        </div>
+
+                        <div class="card-body">
+                            <a href="#" class="card-link">View More</a>
+
+                        </div>
+                    </div>
+                </center>
+            </div>
+
+            <div class="col-md-4" >
+                <center>
+
+                    <div class="card" style="width: 18rem;">
+                       
+                        <img class="card-img-top" src="~/images/schoolDreamsHomepage.jpg" alt="Card image cap"style=" border-radius:18px;"/>
+                        <div class="card-body">
+
+                            <h5 class="card-title">School Dream</h5>
+                            <p class="card-text">I want to go to a school in States.  But I don't have the money to fund my education and my family isn't supportive of my idea. I can't fund education on my own cause our currency is very weak against American dollar. 1$=110 here. I will be grateful if you help.</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width:20%"></div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div class="card-body">
+                            <a href="#" class="card-link">View More</a>
+
+                        </div>
+                    </div>
+
+                </center>
+            </div>
+            <div class="col-md-4" >
+
+                <center>
+
+                    <div class="card" style="width: 18rem;">
+                        
+                        <img class="card-img-top" src="~/images/schoolDreamsHomepage.jpg" alt="Card image cap" style=" border-radius:18px;"/>
+                        <div class="card-body">
+                            <h5 class="card-title">School Dream</h5>
+                            <p class="card-text">I want to go to a school in States.  But I don't have the money to fund my education and my family isn't supportive of my idea. I can't fund education on my own cause our currency is very weak against American dollar. 1$=110 here. I will be grateful if you help.</p>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" style="width:80%"></div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="card-body">
+                            <a href="#" class="card-link">View More</a>
+
+                        </div>
+                    </div>
+
+
+                </center>
+            </div>
+        </div>
+    </div>
+
+</section><br />
+
+

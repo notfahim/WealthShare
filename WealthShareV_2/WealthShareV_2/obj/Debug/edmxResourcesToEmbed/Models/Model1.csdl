@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WealthShareDBV2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User_Tbl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+    <Property Name="Occupation" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AccountStatus" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="imgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Issue_Tbl" Relationship="WealthShareDBV2Model.FK_Issue_Tbl_User_Tbl" FromRole="User_Tbl" ToRole="Issue_Tbl" />
+  </EntityType>
+  <EntityContainer Name="WealthShareDBV2Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="User_Tbl" EntityType="Self.User_Tbl" />
+    <EntitySet Name="Admin_Tbl" EntityType="WealthShareDBV2Model.Admin_Tbl" />
+    <EntitySet Name="Donation_Tbl" EntityType="WealthShareDBV2Model.Donation_Tbl" />
+    <EntitySet Name="Category_Tbl" EntityType="WealthShareDBV2Model.Category_Tbl" />
+    <EntitySet Name="Issue_Tbl" EntityType="WealthShareDBV2Model.Issue_Tbl" />
+    <AssociationSet Name="FK__Issue_Tbl__UserI__173876EA" Association="WealthShareDBV2Model.FK__Issue_Tbl__UserI__173876EA">
+      <End Role="Category_Tbl" EntitySet="Category_Tbl" />
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_Tbl_Category_Tbl1" Association="WealthShareDBV2Model.FK_Issue_Tbl_Category_Tbl1">
+      <End Role="Category_Tbl" EntitySet="Category_Tbl" />
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Donation___Issue__1CF15040" Association="WealthShareDBV2Model.FK__Donation___Issue__1CF15040">
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+      <End Role="Donation_Tbl" EntitySet="Donation_Tbl" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Issue_Tbl_User_Tbl" Association="WealthShareDBV2Model.FK_Issue_Tbl_User_Tbl">
+      <End Role="User_Tbl" EntitySet="User_Tbl" />
+      <End Role="Issue_Tbl" EntitySet="Issue_Tbl" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin_Tbl">
+    <Key>
+      <PropertyRef Name="Id_ad" />
+    </Key>
+    <Property Name="Id_ad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminEmail" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminPassword" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Donation_Tbl">
+    <Key>
+      <PropertyRef Name="Id_donation" />
+    </Key>
+    <Property Name="Id_donation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Iduser" Type="Int32" Nullable="false" />
+    <Property Name="Idissue" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Progress" Type="Decimal" Precision="18" Scale="2" />
+    <NavigationProperty Name="Issue_Tbl" Relationship="WealthShareDBV2Model.FK__Donation___Issue__1CF15040" FromRole="Donation_Tbl" ToRole="Issue_Tbl" />
+  </EntityType>
+  <EntityType Name="Category_Tbl">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Issue_Tbl" Relationship="WealthShareDBV2Model.FK__Issue_Tbl__UserI__173876EA" FromRole="Category_Tbl" ToRole="Issue_Tbl" />
+    <NavigationProperty Name="Issue_Tbl1" Relationship="WealthShareDBV2Model.FK_Issue_Tbl_Category_Tbl1" FromRole="Category_Tbl" ToRole="Issue_Tbl" />
+  </EntityType>
+  <EntityType Name="Issue_Tbl">
+    <Key>
+      <PropertyRef Name="Id_issue" />
+    </Key>
+    <Property Name="Id_issue" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Issue_Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Goal" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="CurrentAmount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="IssueStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="issueImgPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cat_Id" Type="Int32" />
+    <NavigationProperty Name="Category_Tbl" Relationship="WealthShareDBV2Model.FK__Issue_Tbl__UserI__173876EA" FromRole="Issue_Tbl" ToRole="Category_Tbl" />
+    <NavigationProperty Name="Category_Tbl1" Relationship="WealthShareDBV2Model.FK_Issue_Tbl_Category_Tbl1" FromRole="Issue_Tbl" ToRole="Category_Tbl" />
+    <NavigationProperty Name="Donation_Tbl" Relationship="WealthShareDBV2Model.FK__Donation___Issue__1CF15040" FromRole="Issue_Tbl" ToRole="Donation_Tbl" />
+    <NavigationProperty Name="User_Tbl" Relationship="WealthShareDBV2Model.FK_Issue_Tbl_User_Tbl" FromRole="Issue_Tbl" ToRole="User_Tbl" />
+  </EntityType>
+  <Association Name="FK__Issue_Tbl__UserI__173876EA">
+    <End Type="WealthShareDBV2Model.Category_Tbl" Role="Category_Tbl" Multiplicity="0..1" />
+    <End Type="WealthShareDBV2Model.Issue_Tbl" Role="Issue_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category_Tbl">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Issue_Tbl">
+        <PropertyRef Name="Cat_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_Tbl_Category_Tbl1">
+    <End Type="WealthShareDBV2Model.Category_Tbl" Role="Category_Tbl" Multiplicity="0..1" />
+    <End Type="WealthShareDBV2Model.Issue_Tbl" Role="Issue_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category_Tbl">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Issue_Tbl">
+        <PropertyRef Name="Cat_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Donation___Issue__1CF15040">
+    <End Type="WealthShareDBV2Model.Issue_Tbl" Role="Issue_Tbl" Multiplicity="1" />
+    <End Type="WealthShareDBV2Model.Donation_Tbl" Role="Donation_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Issue_Tbl">
+        <PropertyRef Name="Id_issue" />
+      </Principal>
+      <Dependent Role="Donation_Tbl">
+        <PropertyRef Name="Idissue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Issue_Tbl_User_Tbl">
+    <End Type="WealthShareDBV2Model.User_Tbl" Role="User_Tbl" Multiplicity="1" />
+    <End Type="WealthShareDBV2Model.Issue_Tbl" Role="Issue_Tbl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User_Tbl">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Issue_Tbl">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,135 @@
+﻿@using PagedList.Mvc
+@model  PagedList.IPagedList<WealthShareV_2.Models.User_Tbl>
+
+@{
+    ViewBag.Title = "MemberManagement";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    @*<title>Issue Feed</title>*@
+    <link href="~/Content/paginition.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/myCustomStyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+
+
+    <div class="container-fluid" style="margin-top:90px;">
+        <div class="jumbotron" style=" background-image: linear-gradient(-90deg,#FFFFFF,#E1F5C4,#EDE574,#FFFFFF);">
+            <div class="row">
+                <div class="col">
+                    <center>
+                        <h1>Member Management</h1>
+
+                    </center>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="container issueFeed" style="margin-top:60px;">
+
+
+
+        <div class="row mx-auto" style="margin-bottom:40px">
+            @if (Model != null)
+            {
+                foreach (var items in Model)
+                {
+
+
+                    <div class="table-responsive-sm">
+                        <table class="table table-bordered">
+
+                            
+                            <tbody>
+                                <tr >
+                                   
+                                        <td>
+
+                                            <img src="@Url.Content(items.imgPath)"  width="200px"  height="200px"  style=" border-radius:18px;" />
+
+
+                                        </td>
+                                        <td>
+                                            <h4  style="color:#808080; font-family:'Arial Rounded MT';text-align:center">@items.UserName</h4>
+                                        </td>
+                                        <td>
+                                             @items.UserEmail
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Approve", "ApproveMember", new { id = items.Id }, new { @class = "btn btn-success btn-lg" })
+                                        </td>
+
+                                    
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
+
+
+
+                    @*<div class="col-md-4">
+                    <center>
+
+                        <div class="card">
+
+
+                            <img class="card-img-top" src="@Url.Content(items.imgPath)" style=" border-radius:18px;" />
+
+                            <div class="card-body">
+                                <h4 class="card-title" style="color:#808080; font-family:'Arial Rounded MT';text-align:center">@items.UserName</h4>
+
+                                <p class="card-text"> @items.UserEmail</p>
+
+
+
+                            </div>
+
+                            <div class="card-body">
+
+                                @Html.ActionLink("Approve", "ApproveMember", new { id = items.Id }, new { @class = "btn btn-success btn-lg" })
+
+                                @Html.ActionLink("Decline", "DeleteUser", new { id = items.Id }, new { @class = "btn btn-danger btn-lg" })
+
+                            </div>
+                        </div>
+
+                    </center>
+                </div>*@
+
+
+
+                }
+            }
+
+
+
+        </div>
+
+
+    </div>
+
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("IssueManagement", new { page }))
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
